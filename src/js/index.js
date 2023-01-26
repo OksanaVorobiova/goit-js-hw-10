@@ -29,15 +29,19 @@ function onInputSearch(e) {
 
 function validateDataLength(data) {
     if (data.length > 10) {
-        
+
         return Notify.info("Too many matches found. Please enter a more specific name.");
 
     } else if (data.length >= 2 && data.length <= 10) {
 
+        infoContainer.innerHTML = "";
         listEl.innerHTML = reduceDataToList(data);
         
     } else if (data.length === 1) {
-        rendering.makeCountryCardMarkup();
+
+       listEl.innerHTML = "";
+       infoContainer.innerHTML = rendering.makeCountryCardMarkup(data[0]);
+        
     } else if (data.length === 0) throw new Error("No data");
 }
 

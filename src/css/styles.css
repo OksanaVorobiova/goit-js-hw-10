@@ -21,7 +21,6 @@ body {
 
 .country-list {
   list-style-type: none;
-  padding: 20px;
   margin: 0;
 }
 
@@ -39,5 +38,24 @@ body {
 }
 
 .country-name {
+  margin: 0 0 0 10px;
+}
+
+.country-card {
+  width: 50vw;
+}
+
+.card-head {
+  display: flex;
+  height: 55px;
+  font-weight: 700;
+}
+
+.param {
+  font-weight: 500;
+}
+
+.card-country-name {
+  font-size: 30px;
   margin: 0 0 0 10px;
 }
