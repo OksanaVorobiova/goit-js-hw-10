@@ -22,7 +22,13 @@ function onInputSearch(e) {
 
     if (value) {
         fetchCountries(value)
-            .then(data => validateDataLength(data));
+            .then(data => validateDataLength(data))
+            .catch(onFetchError);
+    }
+
+    if (value === "") {
+        listEl.innerHTML = "";
+        infoContainer.innerHTML = "";
     }
 }
 
@@ -39,15 +45,20 @@ function validateDataLength(data) {
         
     } else if (data.length === 1) {
 
-       listEl.innerHTML = "";
-       infoContainer.innerHTML = rendering.makeCountryCardMarkup(data[0]);
+        listEl.innerHTML = "";
+        infoContainer.innerHTML = rendering.makeCountryCardMarkup(data[0]);
         
-    } else if (data.length === 0) throw new Error("No data");
+    } 
 }
 
 
 function reduceDataToList(data) {
     return data.reduce((list, country) => rendering.makeCountriesListMarkup(country) + list, "");
+}
+
+function onFetchError(error) {
+    listEl.innerHTML = infoContainer.innerHTML = "";
+    Notify.failure("Oops, there is no country with that name");
 }
 
 
