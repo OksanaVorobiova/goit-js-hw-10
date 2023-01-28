@@ -35,7 +35,8 @@ function onInputSearch(e) {
 
 function validateDataLength(data) {
     if (data.length > 10) {
-
+        listEl.innerHTML = "";
+        infoContainer.innerHTML = "";
         return Notify.info("Too many matches found. Please enter a more specific name.");
 
     } else if (data.length >= 2 && data.length <= 10) {
